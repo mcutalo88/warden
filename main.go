@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"regexp"
-	"strconv"
 	"time"
 	"github.com/bwmarrin/discordgo"
 )
@@ -71,9 +70,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 	if islink {
 		removeLink(s,m)
-		//warnUser
+		warnUser(s,m)
 	}
-	_, _ = s.ChannelMessageSend(m.ChannelID, strconv.FormatBool(islink))
 }
 
 //Check if the message content is a link
@@ -85,11 +83,16 @@ func isLink(m *discordgo.MessageCreate) bool {
 	}
 }
 
-// func warnUser() {
-//
-// }
-//
+func warnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
+	 createChat,_:=s.UserChannelCreate(m.Author.ID)
+	 channel,_:=s.Channel(m.ChannelID)
+	 message:= "Do not paste link in "+channel.Name+" chat!!!!"
+	 _, _ = s.ChannelMessageSend(createChat.ID,message)
+
+}
+
 func removeLink(s *discordgo.Session, m *discordgo.MessageCreate) {
-	//time.Sleep(5 *time.Second) THIS IS FOR TESTING REMOVE WHEN DONE!!!!
+	//THIS IS FOR TESTING REMOVE WHEN DONE!!!!
+	time.Sleep(5 *time.Second)
 	s.ChannelMessageDelete(m.ChannelID,m.ID)
 }
