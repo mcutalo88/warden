@@ -86,7 +86,7 @@ func isLink(m *discordgo.MessageCreate) bool {
 func warnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
 	 createChat,_:=s.UserChannelCreate(m.Author.ID)
 	 channel,_:=s.Channel(m.ChannelID)
-	 message:= "Do not paste link in "+channel.Name+" chat!!!!"
+	 message:= "Do not paste link in "+channel.Name+" chat!!!! You will be banned if you do this 3 more times!"
 	 _, _ = s.ChannelMessageSend(createChat.ID,message)
 
 }
