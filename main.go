@@ -85,7 +85,7 @@ func isLink(m *discordgo.MessageCreate) bool {
 
 func warnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
 	 createChat,_:=s.UserChannelCreate(m.Author.ID)
-	 channel,_:=s.Channel(m.ChannelID)
+	 //channel,_:=s.Channel(m.ChannelID)
 	 message:= "Do not paste link outside of pics_vids channel!!!! This is a warning!"
 	 _, _ = s.ChannelMessageSend(createChat.ID,message)
 
