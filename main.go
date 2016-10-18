@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"time"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -63,9 +64,14 @@ func main() {
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	islink:= isLink(m)
+
 	// Ignore all messages created by the bot itself
 	if m.Author.ID == BotID {
 		return
+	}
+	if islink {
+		removeLink(s,m)
+		//warnUser
 	}
 	_, _ = s.ChannelMessageSend(m.ChannelID, strconv.FormatBool(islink))
 }
@@ -83,6 +89,7 @@ func isLink(m *discordgo.MessageCreate) bool {
 //
 // }
 //
-// func removeLink() {
-
-//}
+func removeLink(s *discordgo.Session, m *discordgo.MessageCreate) {
+	//time.Sleep(5 *time.Second) THIS IS FOR TESTING REMOVE WHEN DONE!!!!
+	s.ChannelMessageDelete(m.ChannelID,m.ID)
+}
