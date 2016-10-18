@@ -3,7 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-
+	"regexp"
+	"strconv"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -14,34 +15,32 @@ var (
 	Token    string
 	BotID    string
 )
+var Reg = regexp.MustCompile(`https?`)
 
 func init() {
 
-	/*flag.StringVar(&Email, "e", "", "Account Email")
-	flag.StringVar(&Password, "p", "", "Account Password") */
-
-	//testbot token = MjI5MDM5Mjk0NTAzODQ1ODk4.Cuax2Q.r6dQO8APXzlN7HULTCrvvhITjGg
+	flag.StringVar(&Email, "e", "", "Account Email")
+	flag.StringVar(&Password, "p", "", "Account Password")
 	flag.StringVar(&Token, "t", "", "Account Token")
 	flag.Parse()
 }
 
 func main() {
-
 	// Create a new Discord session using the provided login information.
-	dg, err := discordgo.New(Token)
+	dg, err := discordgo.New(Email, Password, Token)
 	if err != nil {
 		fmt.Println("error creating Discord session,", err)
 		return
 	}
 
 	// Get the account information.
-	/*u, err := dg.User("@me")
+	u, err := dg.User("@me")
 	if err != nil {
 		fmt.Println("error obtaining account details,", err)
-	}*/
+	}
 
 	// Store the account ID for later use.
-	//BotID = u.ID
+	BotID = u.ID
 
 	// Register messageCreate as a callback for the messageCreate events.
 	dg.AddHandler(messageCreate)
@@ -63,18 +62,27 @@ func main() {
 // message is created on any channel that the autenticated bot has access to.
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
+	islink:= isLink(m)
 	// Ignore all messages created by the bot itself
 	if m.Author.ID == BotID {
 		return
 	}
+	_, _ = s.ChannelMessageSend(m.ChannelID, strconv.FormatBool(islink))
+}
 
-	// If the message is "ping" reply with "Pong!"
-	if m.Content == "ping" {
-		_, _ = s.ChannelMessageSend(m.ChannelID, "Pong!")
-	}
-
-	// If the message is "pong" reply with "Ping!"
-	if m.Content == "pong" {
-		_, _ = s.ChannelMessageSend(m.ChannelID, "Ping!")
+//Check if the message content is a link
+func isLink(m *discordgo.MessageCreate) bool {
+	if Reg.MatchString(m.Content) {
+		return true
+	} else {
+		return false
 	}
 }
+
+// func warnUser() {
+//
+// }
+//
+// func removeLink() {
+
+//}
