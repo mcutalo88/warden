@@ -4,8 +4,10 @@ import (
 	"flag"
 	"fmt"
 	"regexp"
-	"time"
+	//"time"
 	"github.com/bwmarrin/discordgo"
+	//"github.com/BurntSushi/toml"
+	 rmlink "./channelutils"
 )
 
 // Variables used for command line parameters
@@ -62,37 +64,10 @@ func main() {
 // message is created on any channel that the autenticated bot has access to.
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
-	islink:= isLink(m)
-
 	// Ignore all messages created by the bot itself
 	if m.Author.ID == BotID {
 		return
 	}
-	if islink {
-		removeLink(s,m)
-		warnUser(s,m)
-	}
-}
 
-//Check if the message content is a link
-func isLink(m *discordgo.MessageCreate) bool {
-	if Reg.MatchString(m.Content) {
-		return true
-	} else {
-		return false
-	}
-}
-
-func warnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
-	 createChat,_:=s.UserChannelCreate(m.Author.ID)
-	 //channel,_:=s.Channel(m.ChannelID)
-	 message:= "Do not paste link outside of pics_vids channel!!!! This is a warning!"
-	 _, _ = s.ChannelMessageSend(createChat.ID,message)
-
-}
-
-func removeLink(s *discordgo.Session, m *discordgo.MessageCreate) {
-	//THIS IS FOR TESTING REMOVE WHEN DONE!!!!
-	time.Sleep(5 *time.Second)
-	s.ChannelMessageDelete(m.ChannelID,m.ID)
+	rmlink.IsLink(s,m)
 }
