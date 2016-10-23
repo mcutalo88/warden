@@ -5,10 +5,10 @@ Warden
 A Discord Mod.
 
 ### Build
-```
-go get
-go build
-```
+
+`go get`
+<br/>
+`go build`
 
 ### Usage
 
