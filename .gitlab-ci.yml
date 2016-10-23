@@ -7,6 +7,7 @@ build-warden:
   script:
     - echo `pwd`
 <<<<<<< HEAD
+<<<<<<< HEAD
     - export GOPATH=`pwd`
 =======
     - mkdir -p $GOPATH/src/warden
@@ -16,5 +17,11 @@ build-warden:
 
     - cd $GOPATH/src/warden
 >>>>>>> 1b0d98e... add ci
+=======
+    - mkdir -p $GOPATH/src/
+    - cp -r /builds/azeroth/warden $GOPATH/src/
+    - cd $GOPATH/src/warden
+    - go env
+>>>>>>> 22c1302... add ci; fixes #4
     - go get
     - go build
