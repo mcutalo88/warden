@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/bwmarrin/discordgo"
-	rmlink "Jeffs-bot/channelutils"
-	"Jeffs-bot/config"
+	utils "warden/channelutils"
+	"warden/config"
 
 )
 // Variables used for command line parameters
@@ -67,5 +67,5 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	rmlink.IsLink(s,m)
+	utils.IsLink(s,m)
 }
