@@ -4,8 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/bwmarrin/discordgo"
-	rmlink "./channelutils"
-	"./config"
+	rmlink "Jeffs-bot/channelutils"
+	"Jeffs-bot/config"
 
 )
 // Variables used for command line parameters

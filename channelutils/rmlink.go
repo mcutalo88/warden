@@ -2,7 +2,7 @@ package channelutils
 import (
 	"github.com/bwmarrin/discordgo"
 	"regexp"
-	"../config"
+	"Jeffs-bot/config"
 )
 var Reg = regexp.MustCompile(`https?`)
 
