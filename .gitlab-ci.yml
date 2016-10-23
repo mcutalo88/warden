@@ -6,6 +6,15 @@ build-warden:
   image: golang:1.7.0
   script:
     - echo `pwd`
+<<<<<<< HEAD
     - export GOPATH=`pwd`
+=======
+    - mkdir -p $GOPATH/src/warden
+    - mv /builds/azeroth/warden/ $GOPATH/src/warden
+
+    - go env
+
+    - cd $GOPATH/src/warden
+>>>>>>> 1b0d98e... add ci
     - go get
     - go build
