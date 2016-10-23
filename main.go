@@ -3,13 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"regexp"
-	//"time"
 	"github.com/bwmarrin/discordgo"
-	//"github.com/BurntSushi/toml"
-	 rmlink "./channelutils"
-)
+	rmlink "./channelutils"
+	"./config"
 
+)
 // Variables used for command line parameters
 var (
 	Email    string
@@ -17,10 +15,9 @@ var (
 	Token    string
 	BotID    string
 )
-var Reg = regexp.MustCompile(`https?`)
 
 func init() {
-
+	config.ReadConfig("./config/botconfig.toml")
 	flag.StringVar(&Email, "e", "", "Account Email")
 	flag.StringVar(&Password, "p", "", "Account Password")
 	flag.StringVar(&Token, "t", "", "Account Token")
@@ -53,6 +50,7 @@ func main() {
 		fmt.Println("error opening connection,", err)
 		return
 	}
+	config.UseDefaultMess(dg)
 
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
 	// Simple way to keep program running until CTRL-C is pressed.

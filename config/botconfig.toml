@@ -1,0 +1,17 @@
+# Specify what channels you dont want to allow links.
+Channels = [
+    "229013179861041153",
+    "235616467914063883",
+]
+
+# Change the defualt private message to warn user. If you keep commented it will use default message.
+# The DEFAULT MESSAGE is = "Do not paste links in [ <channelName>..n ] chat!!!! You will be banned if you do this <warnings..n> more times!" 
+#Message = "This is your custom message"
+
+# NumberOfWarnings lets you config how many warnings a user can get before action is taken.
+# the action can be banTextChannels(bans from ALL text channels) or banFromServer
+# banDuration is ONLY applicable with textchannelban. The time is in hours.
+ NumberOfWarnings = 6
+ BanTextChannels = true
+ BanDuration = 24
+# banFromServer = false
