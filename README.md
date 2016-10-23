@@ -1,17 +1,12 @@
-<img align="right" src="http://bwmarrin.github.io/discordgo/img/discordgo.png">
-PingPong Example
+<img align="right" src="http://vignette2.wikia.nocookie.net/wowwiki/images/a/a4/Warden_artwork.jpg/revision/latest?cb=20091016194237">
+Warden
 ====
 
-This example demonstrates how to utilize DiscordGo to create a Ping Pong Bot.
-
-This Bot will respond to "ping" with "Pong!" and "pong" with "Ping!".
+A Discord Mod.
 
 ### Build
-
-This assumes you already have a working Go environment setup and that
-DiscordGo is correctly installed on your system.
-
-```sh
+```
+go get
 go build
 ```
 
@@ -22,8 +17,8 @@ Password for an account.  Keep in mind official Bot accounts only support
 authenticating via Token.
 
 ```
-./pingpong --help
-Usage of ./pingpong:
+./warden --help
+Usage of ./warden:
   -e string
         Account Email
   -p string
@@ -36,12 +31,12 @@ The below example shows how to start the bot using an Email and Password for
 authentication.
 
 ```sh
-./pingpong -e EmailHere -p PasswordHere
+./warden -e EmailHere -p PasswordHere
 ```
 
 The below example shows how to start the bot using the bot user's token
 
 ```sh
-./pingpong -t "BOT YOUR_BOT_TOKEN"
+./warden -t "BOT YOUR_BOT_TOKEN"
 MjI5MDM5Mjk0NTAzODQ1ODk4.Cu7R_g.0EwXEq6MrGEyXjSAbQma4GqRa1I
 ```
