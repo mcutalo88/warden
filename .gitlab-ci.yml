@@ -1,0 +1,11 @@
+stages:
+  - build
+
+build-warden:
+  stage: build
+  image: golang:1.7.0
+  script:
+    - echo `pwd`
+    - export GOPATH=`pwd`
+    - go get
+    - go build
