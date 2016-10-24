@@ -8,6 +8,7 @@ build-warden:
     - echo `pwd`
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - export GOPATH=`pwd`
 =======
     - mkdir -p $GOPATH/src/warden
@@ -23,5 +24,11 @@ build-warden:
     - cd $GOPATH/src/warden
     - go env
 >>>>>>> 22c1302... add ci; fixes #4
+=======
+    - mkdir -p $GOPATH/src/
+    - cp -r /builds/azeroth/warden $GOPATH/src/
+    - cd $GOPATH/src/warden
+    - go env
+>>>>>>> b2c64ec... oops mike broke it now fix CI
     - go get
     - go build
