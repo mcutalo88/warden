@@ -1,6 +1,7 @@
 package channelutils
 import (
 	"github.com/bwmarrin/discordgo"
+	mgo "warden/mongodb"
 	"regexp"
 	"warden/config"
 )
@@ -10,6 +11,7 @@ var Reg = regexp.MustCompile(`https?`)
   Go needs them to be capital to be exportable.*/
 //Check if the message content is a link
 func IsLink(s *discordgo.Session, m *discordgo.MessageCreate) {
+
 	if Reg.MatchString(m.Content) {
 		RemoveLink(s,m)
 	}
@@ -17,12 +19,18 @@ func IsLink(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 // Sends the user a private message saying fuck off man
 func WarnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
+
 	 createChat,_:=s.UserChannelCreate(m.Author.ID)
+	 user:= mgo.IsUserInMongo(m.Author.ID,m.Author.Username)
+	 if(user.Banned){
+		 GetBanned()
+	 }
 	 _, _ = s.ChannelMessageSend(createChat.ID,config.GetMessage())
 }
 
 // This pillages the link from chat get wrecked son
 func RemoveLink(s *discordgo.Session, m *discordgo.MessageCreate) bool {
+
 	var channels = config.GetChannelIDs()
 	for _,channelID := range channels {
 		if(m.ChannelID == channelID) {
@@ -32,4 +40,8 @@ func RemoveLink(s *discordgo.Session, m *discordgo.MessageCreate) bool {
 		}
 	}
 	return false
+}
+
+func GetBanned() {
+
 }

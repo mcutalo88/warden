@@ -15,6 +15,8 @@ type Config struct {
 	NumberOfWarnings int
     BanTextChannels	 bool
     BanDuration 	 int
+    Ip               string
+    Database         string
 }
 
 var GlobalConfig Config
@@ -29,28 +31,46 @@ func ReadConfig(conf string) {
 }
 
 func GetBotConf() Config {
+
     return GlobalConfig
 }
 
 func GetMessage() string {
+
     return GlobalConfig.Message
 }
 
 func GetNumberOfWarnings() int {
+
     return GlobalConfig.NumberOfWarnings
 }
 
 func GetBanTextChannels() bool {
+
     return GlobalConfig.BanTextChannels
 }
 
 func GetBanDuration() int {
+
     return GlobalConfig.BanDuration
 }
 
 func GetChannelIDs() []string {
+
     return GlobalConfig.Channels
 }
+
+func GetIp() string {
+
+    return GlobalConfig.Ip
+}
+
+
+func GetDatabase() string {
+
+    return GlobalConfig.Database
+}
+
 //This will build default message if Message is commented out in file
 func UseDefaultMess(s *discordgo.Session) {
     //might want to add a strip just in case
@@ -70,8 +90,4 @@ func UseDefaultMess(s *discordgo.Session) {
             GlobalConfig.Message = "Do not paste links in `[ "+formatMess+" ]` chat!!!! You will be banned if you do this "+warnings+" more times!"
         }
     }
-}
-
-func CheckConfig(){
-
 }

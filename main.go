@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/bwmarrin/discordgo"
-	utils "warden/channelutils"
+	utils "warden/botutils"
 	"warden/config"
 
 )
