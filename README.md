@@ -37,6 +37,6 @@ authentication.
 The below example shows how to start the bot using the bot user's token
 
 ```sh
-./warden -t "BOT YOUR_BOT_TOKEN"
+./warden -t "Bot YOUR_BOT_TOKEN"
 MjI5MDM5Mjk0NTAzODQ1ODk4.Cu7R_g.0EwXEq6MrGEyXjSAbQma4GqRa1I
 ```

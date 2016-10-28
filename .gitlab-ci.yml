@@ -3,7 +3,7 @@ stages:
 
 build-warden:
   stage: build
-  image: golang:1.7.0
+  image: golang:1.7.3
   script:
     - echo `pwd`
 <<<<<<< HEAD
