@@ -1,5 +1,11 @@
 stages:
   - build
+<<<<<<< HEAD
+=======
+  - test
+  - push
+  - release
+>>>>>>> f3937fc... #9 first try build and push docker images in ci
 
 build-warden:
   stage: build
@@ -32,3 +38,27 @@ build-warden:
 >>>>>>> b2c64ec... oops mike broke it now fix CI
     - go get
     - go build
+
+build-and-push-dev-image:
+  only:
+    - dev
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: push
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN 10.0.1.20:4567
+    - docker build -t 10.0.1.20:4567/azeroth/warden:dev .
+    - docker push 10.0.1.20:4567/azeroth/warden:dev
+
+build-and-push-release-image:
+  only:
+    - master
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: release
+  script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN 10.0.1.20:4567
+    - docker build -t 10.0.1.20:4567/azeroth/warden:latest .
+    - docker push 10.0.1.20:4567/azeroth/warden:latest
