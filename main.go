@@ -6,7 +6,7 @@ import (
 	"github.com/bwmarrin/discordgo"
 	utils "warden/botutils"
 	"warden/config"
-
+	mgo "warden/mongodb"
 )
 // Variables used for command line parameters
 var (
@@ -25,6 +25,7 @@ func init() {
 }
 
 func main() {
+	
 	// Create a new Discord session using the provided login information.
 	dg, err := discordgo.New(Email, Password, Token)
 	if err != nil {
@@ -50,6 +51,7 @@ func main() {
 		fmt.Println("error opening connection,", err)
 		return
 	}
+	mgo.Connect(config.GetIp())
 	config.UseDefaultMess(dg)
 
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")
