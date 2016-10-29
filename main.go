@@ -6,7 +6,10 @@ import (
 	"github.com/bwmarrin/discordgo"
 	utils "warden/botutils"
 	"warden/config"
+<<<<<<< HEAD
 	mgo "warden/mongodb"
+=======
+>>>>>>> d71b804... help setup
 )
 // Variables used for command line parameters
 var (
