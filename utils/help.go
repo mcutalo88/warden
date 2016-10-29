@@ -13,7 +13,14 @@ import (
   "github.com/bwmarrin/discordgo"
 )
 
+const CODE_BLOCK string = "```"
+
 // Render config
-func RenderConfig(s *discordgo.Session, m *discordgo.MessageCreate) {
-  _, _ = s.ChannelMessageSend(m.ChannelID, "Choice")
+func PrintHelp(s *discordgo.Session, m *discordgo.MessageCreate) {
+  message := CODE_BLOCK +
+    "./warden \n" +
+    "\t-h :\tprint help menu \n" +
+    CODE_BLOCK
+
+  _, _ = s.ChannelMessageSend(m.ChannelID, message)
 }

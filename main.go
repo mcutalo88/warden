@@ -74,5 +74,9 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	utils.IsLink(s,m)
+	if m.Content == "./warden -h" {
+		utils.PrintHelp(s, m)
+	}
+
+	utils.IsLink(s, m)
 }
