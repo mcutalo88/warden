@@ -1,11 +1,17 @@
 stages:
   - build
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - test
   - push
   - release
 >>>>>>> f3937fc... #9 first try build and push docker images in ci
+=======
+  # - test
+  # - push
+  # - release
+>>>>>>> 96f969d... fix ci for now
 
 build-warden:
   stage: build
