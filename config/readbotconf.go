@@ -27,48 +27,12 @@ func ReadConfig(conf string) {
     if _, err := toml.DecodeFile(conf, &BotConfig); err != nil {
 		fmt.Println(err)
 	}
-    GlobalConfig = BotConfig
+
+  GlobalConfig = BotConfig
 }
 
-func GetBotConf() Config {
-
-    return GlobalConfig
-}
-
-func GetMessage() string {
-
-    return GlobalConfig.Message
-}
-
-func GetNumberOfWarnings() int {
-
-    return GlobalConfig.NumberOfWarnings
-}
-
-func GetBanTextChannels() bool {
-
-    return GlobalConfig.BanTextChannels
-}
-
-func GetBanDuration() int {
-
-    return GlobalConfig.BanDuration
-}
-
-func GetChannelIDs() []string {
-
-    return GlobalConfig.Channels
-}
-
-func GetIp() string {
-
-    return GlobalConfig.Ip
-}
-
-
-func GetDatabase() string {
-
-    return GlobalConfig.Database
+func Get() Config {
+  return GlobalConfig
 }
 
 //This will build default message if Message is commented out in file

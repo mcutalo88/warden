@@ -4,7 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/bwmarrin/discordgo"
-	utils "warden/botutils"
+
+	"warden/utils"
 	"warden/config"
 <<<<<<< HEAD
 	mgo "warden/mongodb"
@@ -54,7 +55,8 @@ func main() {
 		fmt.Println("error opening connection,", err)
 		return
 	}
-	mgo.Connect(config.GetIp())
+	// mgo.Connect(config.GetIp())
+	mgo.Connect(config.Get().Ip)
 	config.UseDefaultMess(dg)
 
 	fmt.Println("Bot is now running.  Press CTRL-C to exit.")

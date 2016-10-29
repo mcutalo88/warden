@@ -1,4 +1,4 @@
-package channelutils
+package utils
 
 import (
 	"github.com/bwmarrin/discordgo"
@@ -26,13 +26,13 @@ func WarnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
 	 //if(user.Banned){
 		// GetBanned()
 	 //}
-	 _, _ = s.ChannelMessageSend(createChat.ID,config.GetMessage())
+	 _, _ = s.ChannelMessageSend(createChat.ID, config.Get().Message)
 }
 
 // This pillages the link from chat get wrecked son
 func RemoveLink(s *discordgo.Session, m *discordgo.MessageCreate) bool {
 
-	var channels = config.GetChannelIDs()
+	var channels = config.Get().Channels
 	for _,channelID := range channels {
 		if(m.ChannelID == channelID) {
 			s.ChannelMessageDelete(m.ChannelID,m.ID)
