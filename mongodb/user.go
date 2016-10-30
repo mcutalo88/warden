@@ -16,7 +16,7 @@ type User struct {
 func IsUserInMongo(clientId string, userName string) User {
 
     var user = User{}
-    userCollect := Session.DB(config.GetDatabase()).C("user")
+    userCollect := Session.DB(config.Get().Database).C("user")
     getUser := User{}
     userCollect.Find(bson.M{"userid":clientId}).One(&getUser)
 
@@ -33,7 +33,7 @@ func IsUserInMongo(clientId string, userName string) User {
 func CheckToBan(user User) User {
 
     user.Warningnum = user.Warningnum + 1
-    configWarnings:=config.GetNumberOfWarnings()
+    configWarnings:=config.Get().NumberOfWarnings
 
     if(user.Warningnum == configWarnings) {
         user.Banned = true

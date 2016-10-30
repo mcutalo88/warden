@@ -26,7 +26,7 @@ func WarnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
 	 if(user.Banned){
 		 GetBanned()
 	 }
-	 _, _ = s.ChannelMessageSend(createChat.ID,config.GetMessage())
+	 _, _ = s.ChannelMessageSend(createChat.ID,config.Get().Message)
 }
 
 // This pillages the link from chat get wrecked son
