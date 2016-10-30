@@ -15,12 +15,13 @@ import (
 
 const CODE_BLOCK string = "```"
 
-// Render config
 func PrintHelp(s *discordgo.Session, m *discordgo.MessageCreate) {
-  message := CODE_BLOCK +
+  _, _ = s.ChannelMessageSend(m.ChannelID, Help())
+}
+
+func Help() string {
+  return CODE_BLOCK +
     "./warden \n" +
     "\t-h :\tprint help menu \n" +
     CODE_BLOCK
-
-  _, _ = s.ChannelMessageSend(m.ChannelID, message)
 }

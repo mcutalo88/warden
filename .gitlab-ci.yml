@@ -2,6 +2,7 @@ stages:
   - build
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - test
   - push
@@ -9,11 +10,14 @@ stages:
 >>>>>>> f3937fc... #9 first try build and push docker images in ci
 =======
   # - test
+=======
+  - test
+>>>>>>> 1714fdb...  issue #8 set up unit testing
   # - push
   # - release
 >>>>>>> 96f969d... fix ci for now
 
-build-warden:
+build:
   stage: build
   image: golang:1.7.3
   script:
@@ -44,6 +48,18 @@ build-warden:
 >>>>>>> b2c64ec... oops mike broke it now fix CI
     - go get
     - go build
+
+test:
+  stage: test
+  image: golang:1.7.3
+  script:
+    - echo `pwd`
+    - mkdir -p $GOPATH/src/
+    - cp -r /builds/azeroth/warden $GOPATH/src/
+    - cd $GOPATH/src/warden
+    - go env
+    - go get
+    - go test ./...
 
 # build-and-push-dev-image:
 #   only:

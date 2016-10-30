@@ -7,10 +7,7 @@ import (
 
 	"warden/utils"
 	"warden/config"
-<<<<<<< HEAD
 	mgo "warden/mongodb"
-=======
->>>>>>> d71b804... help setup
 )
 // Variables used for command line parameters
 var (
@@ -29,7 +26,7 @@ func init() {
 }
 
 func main() {
-	
+
 	// Create a new Discord session using the provided login information.
 	dg, err := discordgo.New(Email, Password, Token)
 	if err != nil {
