@@ -23,6 +23,7 @@ func WarnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	 createChat,_:=s.UserChannelCreate(m.Author.ID)
 	 user:= mgo.IsUserInMongo(m.Author.ID,m.Author.Username)
+	 
 	 if(user.Banned){
 		 GetBanned()
 	 }
