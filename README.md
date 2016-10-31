@@ -1,5 +1,6 @@
 <img align="right" src="http://vignette2.wikia.nocookie.net/wowwiki/images/a/a4/Warden_artwork.jpg/revision/latest?cb=20091016194237">
 Warden
+[![build status](http://10.0.1.13/azeroth/warden/badges/dev/build.svg)](http://10.0.1.13/azeroth/warden/commits/dev) [![coverage report](http://10.0.1.13/azeroth/warden/badges/dev/coverage.svg)](http://10.0.1.13/azeroth/warden/commits/dev)
 ====
 
 A Discord Mod.
