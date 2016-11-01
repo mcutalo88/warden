@@ -5,6 +5,7 @@ import (
      mgo "gopkg.in/mgo.v2"
      config "warden/config"
 )
+
 type User struct {
     Userid     string // fix this Im liking int better
     Username   string
@@ -23,7 +24,7 @@ func IsUserInMongo(clientId string, userName string) User {
         Banned:     false,
         Bandate:    "",
     }
-    
+
     change := mgo.Change {
         Update: bson.M{"$inc": bson.M{"warningnum": 1}, "$setOnInsert": bson.M{"username":userName, "banned":false, "bandate":""}},
         Upsert:    true,
@@ -34,6 +35,9 @@ func IsUserInMongo(clientId string, userName string) User {
     userCollect.Find(bson.M{"userid":clientId}).Apply(change, &user)
 
     return user
+}
+func MongoUpdate() {
+
 }
 
 //This functions check if user should now be banned from text channels
