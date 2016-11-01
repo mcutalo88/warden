@@ -10,15 +10,9 @@ import (
 )
 
 type Config struct {
-<<<<<<< HEAD
-	Channels         []string
-	Message          string
-	NumberOfWarnings int
-=======
     Channels         []string
     Message          string
     NumberOfWarnings int
->>>>>>> 321ec65... mend
     BanTextChannels	 bool
     BanDuration 	 int
     Ip               string
