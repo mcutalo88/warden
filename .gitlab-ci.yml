@@ -3,6 +3,7 @@ stages:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - test
   - push
@@ -13,6 +14,9 @@ stages:
 =======
   - test
 >>>>>>> 1714fdb...  issue #8 set up unit testing
+=======
+  - test
+>>>>>>> 4340203... removed unused code
   # - push
   # - release
 >>>>>>> 96f969d... fix ci for now
