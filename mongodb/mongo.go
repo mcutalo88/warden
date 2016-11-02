@@ -2,21 +2,17 @@ package mongodb
 
 import (
     mong "gopkg.in/mgo.v2"
+    config "warden/config"
 )
 
-var Session *mong.Session
+var DB *mong.Database
 
 // Takes in a connection as a string
 func Connect(connString string) {
+  session, err := mong.Dial(connString)
+  if err != nil {
+      panic(err)
+  }
 
-        session, err := mong.Dial(connString)
-        if err != nil {
-            panic(err)
-        }
-
-        Session = session
-}
-
-func getSession() *mong.Session {
-    return Session
+  DB = session.DB(config.Get().Database)
 }

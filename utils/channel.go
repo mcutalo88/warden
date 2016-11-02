@@ -2,7 +2,7 @@ package utils
 
 import (
 	"github.com/bwmarrin/discordgo"
-	mgo "warden/mongodb"
+	c "warden/mongodb/collections"
 	"regexp"
 	"warden/config"
 )
@@ -22,8 +22,8 @@ func IsLink(s *discordgo.Session, m *discordgo.MessageCreate) {
 func WarnUser(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	 createChat,_:=s.UserChannelCreate(m.Author.ID)
-	 user:= mgo.IsUserInMongo(m.Author.ID,m.Author.Username)
-	 
+	 user:= c.IsUserInMongo(m.Author.ID,m.Author.Username)
+
 	 if(user.Banned){
 		 GetBanned()
 	 }
