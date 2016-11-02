@@ -5,11 +5,7 @@ import (
 )
 
 type Channel struct {
-  Id    string
-  name  string
+  _Id   string
+  Name  string
   Rules []Rule
-}
-
-func CreateChannel(c Channel) {
-
 }

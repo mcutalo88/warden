@@ -3,11 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strings"
 	"github.com/bwmarrin/discordgo"
 
 	"warden/utils"
 	"warden/config"
 	mgo "warden/mongodb"
+	c "warden/mongodb/collections"
 )
 // Variables used for command line parameters
 var (
@@ -64,6 +66,13 @@ func main() {
 // This function will be called (due to AddHandler above) every time a new
 // message is created on any channel that the autenticated bot has access to.
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
+	/*
+		incoming message
+		look for channel name ...
+		query globalRules + channels specifc
+		apply rules to incomeing messageCreate object
+		take action ..
+	*/
 
 	// Ignore all messages created by the bot itself
 	if m.Author.ID == BotID {
@@ -72,6 +81,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if m.Content == "./warden -h" {
 		utils.PrintHelp(s, m)
+	} else if strings.Contains(m.Content, "./warden rule") {
+		c.Execute(m.Content)
 	}
 
 	utils.IsLink(s, m)
