@@ -7,14 +7,6 @@ import (
      config "warden/config"
 )
 
-type User struct {
-    UserId   string // fix this Im liking int better
-    UserName string
-    Warnings int
-    Banned   bool
-    BanDate  string //This will need to be changed to time ojbect?
-}
-
 // This function checks if the user is in mongodb.
 func IsUserInMongo(clientId string, userName string) User {
 

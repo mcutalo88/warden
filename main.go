@@ -3,13 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"strings"
 	"github.com/bwmarrin/discordgo"
 
 	"warden/utils"
 	"warden/config"
 	mgo "warden/mongodb"
-	c "warden/mongodb/collections"
 )
 // Variables used for command line parameters
 var (
@@ -81,8 +79,6 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	if m.Content == "./warden -h" {
 		utils.PrintHelp(s, m)
-	} else if strings.Contains(m.Content, "./warden rule") {
-		c.Execute(m.Content)
 	}
 
 	utils.IsLink(s, m)
