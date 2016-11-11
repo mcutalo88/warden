@@ -13,10 +13,10 @@ type Rule struct {
   AllowImage bool
 }
 
-func parseOp(rule string) string {
-  fmt.print(strings.Split(rule,"-"))
+func parseOp(rule string) {
+  fmt.Println(strings.Split(rule,"-"))
 }
 
 func Execute(ruleCreate string) {
-  idk := parseOp(ruleCreate)
+  parseOp(ruleCreate)
 }
